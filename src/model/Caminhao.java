@@ -21,7 +21,18 @@ public class Caminhao extends Veiculo {
         if (eixos > 0) {
             this.eixos = eixos;
         } else {
-            System.out.println("Erro: A quantidade de eixos deve ser maior que zero.");
+            System.out.println(
+                    "Erro: A quantidade de eixos do caminhao deve ser maior que zero.");
         }
+    }
+
+    @Override
+    public boolean isValido() {
+        return super.isValido() && this.eixos > 0;
+    }
+
+    @Override
+    public String getTipoVeiculo() {
+        return "caminhao";
     }
 }

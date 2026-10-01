@@ -2,7 +2,7 @@ package model;
 
 /**
  * Representa uma moto utilizada nas entregas.
- * Herda os dados comuns da classe Veiculo.
+ * Herda os dados comuns aos diferentes tipos de veículos.
  */
 public class Moto extends Veiculo {
 
@@ -19,5 +19,16 @@ public class Moto extends Veiculo {
 
     private void setBau(boolean bau) {
         this.bau = bau;
+    }
+
+    @Override
+    public String getTipoVeiculo() {
+        return "moto";
+    }
+
+    @Override
+    public String getMensagemVeiculoInvalido() {
+        return "Erro: A moto " + this.getPlaca()
+                + " possui dados inválidos. Entrega nao realizada.";
     }
 }

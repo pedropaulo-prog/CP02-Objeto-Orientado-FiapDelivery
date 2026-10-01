@@ -23,11 +23,32 @@ public class Rota {
 
     /**
      * Realiza a entrega do pacote utilizando o veículo associado à rota.
+     * A entrega só acontece quando o pacote e o veículo são válidos.
      */
-    public void realizarEntrega() {
+    public boolean realizarEntrega() {
+
+        if (!veiculo.isValido()) {
+            System.out.println(veiculo.getMensagemVeiculoInvalido());
+            return false;
+        }
+
+        if (!pacote.isValido()) {
+            System.out.println(
+                    "Erro: O pacote " + pacote.getCodigo()
+                            + " possui dados inválidos. Entrega nao realizada.");
+            return false;
+        }
+
         System.out.println(
-            "Levando pacote " + pacote.getCodigo()
-            + " no veículo " + veiculo.getPlaca()
-        );
+                "Levando pacote " + pacote.getCodigo()
+                        + " no " + veiculo.getTipoVeiculo()
+                        + " " + veiculo.getPlaca());
+
+        System.out.println(
+                "Entrega realizada com sucesso pelo "
+                        + veiculo.getTipoVeiculo()
+                        + " " + veiculo.getPlaca() + ".");
+
+        return true;
     }
 }

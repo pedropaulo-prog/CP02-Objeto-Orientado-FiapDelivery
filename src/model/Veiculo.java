@@ -34,7 +34,24 @@ public class Veiculo {
         if (capacidade > 0) {
             this.capacidade = capacidade;
         } else {
-            System.out.println("Erro: A capacidade informada é inválida.");
+            System.out.println(
+                    "Erro: A capacidade do " + this.getTipoVeiculo() + " é inválida.");
         }
+    }
+
+    public boolean isValido() {
+        return this.placa != null
+                && !this.placa.trim().isEmpty()
+                && this.capacidade > 0;
+    }
+
+    public String getTipoVeiculo() {
+        return "veiculo";
+    }
+
+    public String getMensagemVeiculoInvalido() {
+        return "Erro: O " + this.getTipoVeiculo()
+                + " " + this.getPlaca()
+                + " possui dados inválidos. Entrega nao realizada.";
     }
 }

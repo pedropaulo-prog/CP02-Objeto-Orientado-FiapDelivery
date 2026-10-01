@@ -35,7 +35,9 @@ public class Pacote {
         if (peso > 0) {
             this.peso = peso;
         } else {
-            System.out.println("Erro: O peso do pacote deve ser maior que zero.");
+            System.out.println(
+                    "Erro: O peso do pacote " + this.codigo
+                            + " deve ser maior que zero.");
         }
     }
 
@@ -52,5 +54,13 @@ public class Pacote {
         } else {
             System.out.println("Erro: O status informado é inválido.");
         }
+    }
+
+    public boolean isValido() {
+        return this.codigo != null
+                && !this.codigo.trim().isEmpty()
+                && this.peso > 0
+                && this.status != null
+                && !this.status.trim().isEmpty();
     }
 }

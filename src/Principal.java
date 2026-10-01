@@ -8,19 +8,35 @@ public class Principal {
     public static void main(String[] args) {
 
         Caminhao caminhao = new Caminhao("ABC1234", 5000.0, 6);
+        Pacote pacoteCaminhao = new Pacote(
+                "PKT001",
+                20.0,
+                "Em preparaçao");
+
+        Rota rotaCaminhao = new Rota(pacoteCaminhao, caminhao);
+
+        if (rotaCaminhao.realizarEntrega()) {
+            pacoteCaminhao.setStatus("Entregue");
+        }
 
         Moto moto = new Moto("XYZ5678", 100.0, true);
+        Pacote pacoteMoto = new Pacote(
+                "PKT002",
+                10.0,
+                "Em preparaçao");
 
-        Pacote pacote = new Pacote("PKT001", 20.0, "Em preparação");
+        Rota rotaMoto = new Rota(pacoteMoto, moto);
 
-        Rota rotaCaminhao = new Rota(pacote, caminhao);
-        rotaCaminhao.realizarEntrega();
+        if (rotaMoto.realizarEntrega()) {
+            pacoteMoto.setStatus("Entregue");
+        }
 
-        Rota rotaMoto = new Rota(pacote, moto);
-        rotaMoto.realizarEntrega();
+        System.out.println(
+                "Status do pacote " + pacoteCaminhao.getCodigo()
+                        + ": " + pacoteCaminhao.getStatus());
 
-        pacote.setStatus("Em transporte");
-
-        System.out.println("Status do pacote: " + pacote.getStatus());
+        System.out.println(
+                "Status do pacote " + pacoteMoto.getCodigo()
+                        + ": " + pacoteMoto.getStatus());
     }
 }
